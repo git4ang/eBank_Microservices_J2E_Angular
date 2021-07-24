@@ -1,0 +1,18 @@
+
+spring:
+  application:
+    name: admin-server
+  cloud:
+    config:
+      uri: http://localhost:8888
+  boot:
+    admin:
+      discovery:
+        ignored-services: ${spring.application.name}
+
+# ELK's log - logstash via Elasticsearch & kibana
+logging:
+  file:
+    name: "/home/ang/myApps/docker4ang/docker-compose/logstash/logs/elk-eBanque-microservices.log"
+  level:
+    org.springframework.cloud: debug
