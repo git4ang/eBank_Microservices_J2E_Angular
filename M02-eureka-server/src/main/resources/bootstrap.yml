@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: eureka-server
+
+  cloud:
+    config:
+      uri: http://localhost:8888
+  profiles:
+    active: dev, test, native
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+# ELK's log - logstash via Elasticsearch & kibana
+logging:
+  file:
+    name: "/home/ang/myApps/docker4ang/docker-compose/logstash/logs/elk-eBanque-microservices.log"
+  level:
+    org.springframework.cloud: debug
