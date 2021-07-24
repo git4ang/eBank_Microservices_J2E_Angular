@@ -1,0 +1,38 @@
+
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native, dev, test, default
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/git4ang/eBanque_Microservices_configRepos
+          clone-on-start: true
+          default-label: main
+          basedir: target/configRepos
+          username: config
+          password: 1234
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: "/admin"
+  endpoint:
+    health:
+      show-details: always
+    env:
+      post:
+        enabled: true
+
+# ELK's log - logstash via Elasticsearch & kibana
+logging:
+  file:
+    name: "/home/ang/myApps/docker4ang/docker-compose/logstash/logs/elk-eBanque-microservices.log"
+  level:
+    org.springframework.cloud: debug
