@@ -19,7 +19,7 @@ management:
 
 # ELK's log - logstash via Elasticsearch & kibana
 logging:
-  file:
-    name: "/home/ang/myApps/docker4ang/docker-compose/logstash/logs/elk-eBanque-microservices.log"
   level:
     org.springframework.cloud: debug
+#  file:
+#    name: "/home/ang/myApps/docker4ang/docker-compose/logstash/logs/elk-eBanque-microservices.log"
