@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,13 +29,18 @@ public class Employee implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEmployee;
 
+    @NotEmpty
+    @NotBlank
+    @NotNull
     private String name;
 
+    @Email
     private String email;
 
     @ManyToOne
     @JsonIgnoreProperties(value = { "employeeBoss" })
     @JsonIgnore
+    @NotNull
     private Employee employeeBoss;
 
     @OneToMany(mappedBy = "employeeBoss", fetch = FetchType.EAGER)
@@ -43,14 +49,16 @@ public class Employee implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties(value = { "department" })
+    @NotNull
     private Department department;
 
     @ElementCollection
-    private List<Integer> customersIds = new ArrayList<>();
+    private List<@Positive Integer> customersIds = new ArrayList<>();
 
     @ElementCollection
-    private List<String> accountsIds = new ArrayList<>();
+    private List<@NotNull String> accountsIds = new ArrayList<>();
 
+    @Enumerated(EnumType.STRING)
     private EntityState entityState;
 
     public enum EntityState { CREATED, UPDATED, DELETED, PROCESSING }
