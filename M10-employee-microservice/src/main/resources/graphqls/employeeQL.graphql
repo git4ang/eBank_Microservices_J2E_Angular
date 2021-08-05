@@ -1,0 +1,30 @@
+enum EntityStateEmployee {
+    CREATED, UPDATED, DELETED, PROCESSING
+}
+
+type Employee {
+    idEmployee: ID!,
+    name: String!,
+    email: String!,
+    entityState: EntityStateEmployee,
+    employeeBoss: Employee!,
+    underEmployees: [Employee],
+    department: Department!
+}
+
+extend type Query {
+    employee(idEmployee: Int!): Employee
+    employees(offset: Int, count: Int): [Employee]!
+}
+
+extend type Mutation {
+    createEmployee(name: String!, email: String!, idEmployeeBoss: Int!, idDepartment: Int!): Employee,
+    updateEmployee(idEmployee: Int!, name: String!, email: String!): Employee!,
+    deleteEmployee(idEmployee: Int!): String!
+
+    updateEmployee_employeeBoss(idEmployee: Int!, idEmployeeBoss: Int!, isRemoved: Boolean!): Boolean!
+    updateEmployee_department(idEmployee: Int!, idDepartment: Int!, isRemoved: Boolean!): Boolean!
+
+    updateEmployee_customer(idCustomer: Int!, idEmployee: Int!, isRemoved: Boolean!): Boolean!
+    updateEmployee_account(accountNumber: Int!, idEmployee: Int!, isRemoved: Boolean!): Boolean!
+}

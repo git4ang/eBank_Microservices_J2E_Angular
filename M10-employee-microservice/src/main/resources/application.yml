@@ -5,6 +5,27 @@ spring:
     config:
       uri: http://localhost:8888
 
+graphql:
+  servlet:
+    enabled: true
+    mapping: /graphql
+    cors-enabled: true
+    exception-handlers-enabled: true
+    context-setting: per_request_with_instrumentation
+  extended-scalars: Date, Object, Long, PositiveInt, Url, JSON
+  playground:
+    endpoint: /graphql
+    mapping: /playground
+    page-title: "Playground employee-microservice"
+  tools:
+    schema-location-pattern: "**/*.graphql"
+altair:
+  endpoint:
+    graphql: /graphql
+  mapping: /altair
+  page-title: "Altair employee-microservice"
+  enabled: true
+
 logging:
   level:
     org.springframework.web: error

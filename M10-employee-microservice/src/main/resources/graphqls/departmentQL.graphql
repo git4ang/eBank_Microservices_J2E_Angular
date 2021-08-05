@@ -1,0 +1,21 @@
+enum EntityStateDepartment {
+    CREATED, UPDATED, DELETED, PROCESSING
+}
+
+type Department {
+    idDepartment: ID!,
+    name: String!,
+    entityState: EntityStateDepartment
+    employees: [Employee]
+}
+
+extend type Query {
+    department(idDepartment: Int!): Department!,
+    departments(offset: Int, count: Int): [Department]!
+}
+
+extend type Mutation {
+    createDepartment(name: String!): Department!,
+    updateDepartment(idDepartment: Int!, name: String!): Department!,
+    deleteDepartment(idDepartment: Int!): String!
+}
