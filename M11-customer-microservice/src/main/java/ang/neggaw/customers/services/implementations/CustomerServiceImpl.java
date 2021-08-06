@@ -92,6 +92,8 @@ public class CustomerServiceImpl implements CustomerService {
         if(!customerDB.getAccountNumbers().isEmpty())
             customerDB.getAccountNumbers().forEach(accountRestProxy::deleteAccount);
         employeeRestProxy.updateEmployee_customer(idCustomer, customerDB.getIdEmployee(), true);
+
+        customerDB.setEntityState(Customer.EntityState.DELETED);
         customerRepository.delete(customerDB);
         return String.format("Customer with id: '%s' DELETED successfully", idCustomer);
     }

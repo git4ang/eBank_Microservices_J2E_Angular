@@ -3,6 +3,10 @@ package ang.neggaw.customers.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.util.List;
 
@@ -24,14 +28,25 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCustomer;
 
+    @NotEmpty
+    @NotBlank
+    @NotEmpty
     private String name;
 
+    @Email
     private String email;
 
+    @NotEmpty
+    @NotBlank
+    @NotEmpty
     private String phoneNumber;
 
+    @NotEmpty
+    @NotBlank
+    @NotEmpty
     private String address;
 
+    @Positive
     private int idEmployee;
 
     @ElementCollection(fetch = FetchType.EAGER)
