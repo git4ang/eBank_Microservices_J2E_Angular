@@ -5,7 +5,7 @@
 
     <parent>
         <groupId>ang.neggaw</groupId>
-        <artifactId>eBanque_Microservices_Reactive_JavaEE_Thymeleaf</artifactId>
+        <artifactId>eBanque_Microservices_JavaEE_Thymeleaf</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 

@@ -1,11 +1,12 @@
 # eBanque Microservice fullstack project:
 ### 1- Java EE & Spring as backend
-### 2- ***GraphQL & ELK (elasticsearch 7)*** as Databases
-### 3- Thymeleaf or Angular 11 as frontend
+### 2- ***GraphQL & ELK (elasticsearch)*** as Database
+### 3- Keycloak server security
+### 4- Thymeleaf or Angular 11 as frontend
 
 ***
 ***
-Project developed in **Java EE** with **Spring 5 framework** (+ Spring Boot & Spring Cloud), (**Thymeleaf** or **Angular 11**, bootstrap 4) as frontend and (**elasticsearch 7** & **graphQL**) as databases.
+Project developed in **Java EE** with **Spring 5 framework** (+ Spring Boot & Spring Cloud) and frontend (Thymeleaf, bootstrap 4).
 
 - The goal of this project is to implement a Java EE web application on the backend side and Thymeleaf on the frontend side for managing bank accounts.
   This project concerns the implementation of JPA-2, JUnit-Mockito, Hibernate 6, Spring 5 (MVC, IOC, Spring security, Spring boot, Spring cloud ... etc),
@@ -21,17 +22,17 @@ Project developed in **Java EE** with **Spring 5 framework** (+ Spring Boot & Sp
 |           ---             |                ---                |         ---           |                  ---                  |
 | Java EE 			        | Spring 5		                    | H2 Database			| Unit Test
 | Declarative programming	| Spring Boot 2.52	Spring          | Data MongoDB	        | Maven
-| Functional programming	| Spring Cloud 2020.0.3	            | PostgreSQL Driver		| Git
-| Reactive programming 	    | Spring Reactive Web	            | MySQL DRIVER			| Lombok
-| Java JDK-16               | Spring Web						| ELK 7(Elasticsearch, Logstash & Kibana)                      | Spring Boot DevTools
-|                           | Spring Security					| GraphQL	            | java-jwt (Json Web Token)
+| Functional programming	| Spring Cloud 2020.0.3	            | PostgreSQL    		| Git
+| Reactive programming 	    | Spring Reactive Web	            | MySQL     			| Lombok
+| Java JDK-16               | Spring Web						| ELK(Elasticsearch, Logstash & Kibana)                      | Spring Boot DevTools
+|                           | Spring Security					| GraphQL	            | JWT (Json Web Token)
 |                           | Spring Data JPA					| 	                    | Spring Cloud Sleuth
 |                           | Rest Repositories					|                       | Spring Cloud Sleuth Zipkin
-|                           | Spring Data Rest					|                       | Spring Validation (V. Hibernate JPA)
-|                           | Spring Cloud Gateway				| 	                    | Springdoc OpenApi 3.0
-|                           | Spring Cloud Config client/server	| 		                | Spring Configuration Processor
-|                           | Eureka Discovery client/server    |                       | Docker
-|                           | Spring HATEOAS                    |                       | Docker-Compose
+|                           | Spring Data Rest					|                       | Spring Validation
+|                           | Spring Cloud Gateway				| 	                    | Docker
+|                           | Spring Cloud Config client/server	| 		                | Docker-Compose
+|                           | Eureka Discovery client/server    |                       | Keycloak 15
+|                           | Spring HATEOAS                    |                       | Apache Kafka
 |                           | Spring Cloud LoadBalancer         |                       |
 |                           | Spring Cloud Consul
 |                           | Spring Boot Actuator
@@ -40,17 +41,17 @@ Project developed in **Java EE** with **Spring 5 framework** (+ Spring Boot & Sp
 
 ### Objective and detail of the project
 
-- Each **Account entity** is defined by an accountNumber, a balance and a creation date.
+- Each **Employee entity** is defined by his code and his name, department entity, group/role.
+- Each **Customer entity** is defined by his code, his name, his email, collection of Account and Employee entity.
+- Each **Account entity** is defined by an accountNumber, a balance, a creation date, a collection of Operation entity, Customer entity and Employee entity.
 - There are two types of accounts: current account and saving account.
 - A ***Current Account entity*** is an account which also has an overdraft.
 - A ***Savings Account entity*** is an account which also has an interest rate.
 - Each account is owned by a customer and created by an employee.
-- Each **Customer entity** is defined by his code, his name and his email.
-- An **Employee entity** is also defined by his code and his name, department entity, group/role.
 - Each account can have multiple transactions.
 - There are two types of **operations**: deposit and withdrawal.
 - Each transaction is performed by an employee.
-- Each **Transaction entity** is defined by its number, amount, description and date of creation.
+- Each **Transaction entity** is defined by its number, amount, description, date of creation and an Account entity.
 - There are three types of operations: Transfer, Payment and withdrawal.
 - Each **User reactive entity** is defined by an id, username, Customer entity, email and a collection of roles.
 - Each **Role reactive entity** is defined by an id, roleName, collection of users.
@@ -76,12 +77,12 @@ Project developed in **Java EE** with **Spring 5 framework** (+ Spring Boot & Sp
     - codecentric’s Spring Boot Admin is a community project to manage and monitor your Spring Boot ® applications. The applications register with our Spring Boot Admin Client (via HTTP) or are discovered using Spring Cloud ® (e.g. Eureka, Consul).
 
 ***
-- [ ] **M10-employee-microservice** module creation.
+- [x] **M10-employee-microservice** module creation.
     - Set up the M10-employee-microservice module with the creation of the necessary packages such as: entities, repositories, restControllers,
       services, exceptions, proxies ... etc
 
 ***
-- [ ] **M11-customer-microservice** module creation.
+- [x] **M11-customer-microservice** module creation.
     - Set up the M11-customer-microservice module with the creation of the necessary packages such as: entities, repositories, restControllers,
       services, exceptions, proxies ... etc
   ***
@@ -90,7 +91,7 @@ Project developed in **Java EE** with **Spring 5 framework** (+ Spring Boot & Sp
       services, exceptions, proxies ... etc
 
 ***
-- [ ] **M13-operations-microservice** module creation.
+- [ ] **M13-operation-microservice** module creation.
     - Set up the M13-operations-microservice module with the creation of the necessary packages such as: entities, repositories, restControllers,
       services, exceptions, proxies ... etc
 
@@ -100,62 +101,74 @@ Project developed in **Java EE** with **Spring 5 framework** (+ Spring Boot & Sp
       services, exceptions, proxies ... etc
 
 ***   
-- [ ] ELK 7.13.x - Elasticsearch, logstash & kibana.
+- [ ] ELK - Elasticsearch, logstash & kibana.
     - "ELK" is the acronym for three open source projects: Elasticsearch, Logstash, and Kibana. Elasticsearch is a search and analytics engine. Logstash is a server‑side data processing pipeline that ingests data from multiple sources simultaneously, transforms it, and then sends it to a "stash" like Elasticsearch. Kibana lets users visualize data with charts and graphs in Elasticsearch.
         - [**ELK download**] => https://www.elastic.co/fr/downloads/
+            - [x] **M01-config-server**
+            - [x] **M02-eureka-server**
+            - [x] **M03-gateway-server**
+            - [x] **M04-admin-server**
+            - [x] **M10-employee-microservice**
+            - [x] **M11-customer-microservice**
+            - [ ] **M12-account-microservice**
+            - [ ] **M13-operation-microservice**
+            - [ ] **M99-user-microservice**
 ***
 
 - [ ] GraphQL - A query language for your API.
     - GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
+        - [x] **M10-employee-microservice**
+        - [x] **M11-customer-microservice**
+        - [ ] **M12-account-microservice**
+        - [ ] **M13-operation-microservice**
+        - [ ] **M99-user-microservice**
 ***
 
 - [ ] **Zipkin server** and **Sleuth** for all microservices modules.
-    - [ ] **M10-employee-microservice**
-    - [ ] **M11-customer-microservice**
+    - [x] **M10-employee-microservice**
+    - [x] **M11-customer-microservice**
     - [ ] **M12-account-microservice**
-    - [ ] **M13-operations-microservice**
+    - [ ] **M13-operation-microservice**
     - [ ] **M99-user-microservice**
         - **Docker:** _docker run -d -p 9411:9411 openzipkin/zipkin_
         - **Java:** _curl -sSL https://zipkin.io/quickstart.sh | bash -s java -jar zipkin.jar_
 
 ***
-- [ ] OpenApi 3.0 config for all microservices modules.
-    - [ ] **M10-employee-microservice**
-    - [ ] **M11-customer-microservice**
-    - [ ] **M12-account-microservice**
-    - [ ] **M13-operations-microservice**
-        - [**Swagger-url employee**] (http://localhost:8080/employee-microservice/swagger-ui.html/)
-
-***
-- [ ] Validations JPA for the module **M10-employee-microservice**.
-- [ ] Validations JPA for the module **M11-customer-microservice**.
+- [x] Validations JPA for the module **M10-employee-microservice**.
+- [x] Validations JPA for the module **M11-customer-microservice**.
 - [ ] Validations JPA for the module **M12-account-microservice**.
-- [ ] Validations JPA for the module **M13-operations-microservice**.
+- [ ] Validations JPA for the module **M13-operation-microservice**.
 - [ ] Validations JPA for the module **M99-user-microservice**.
 
 ***
-- [ ] Spring Security for the **M01-config-server**
-- [ ] Spring Security for the **M02-eureka-server**
-- [ ] Spring Security for the **M03-gateway-server**
-- [ ] Spring Security for the **M04-admin-server**
-- [ ] Spring Security & JWT for the **M10-employee-microservice**
-- [ ] Spring Security & JWT for the **M11-customer-microservice**
-- [ ] Spring Security & JWT for the **M12-account-microservice**
-- [ ] Spring Security & JWT for the **M13-operations-microservice**
-- [ ] Spring Security & JWT for the **M99-user-microservice**
+- [ ] Spring Security
+    - [ ] Spring Security for the **M01-config-server**
+    - [ ] Spring Security for the **M02-eureka-server**
+    - [ ] Spring Security for the **M03-gateway-server**
+    - [ ] Spring Security for the **M04-admin-server**
 
 ***
 - [ ] **Keycloak server with OAuth 2.0 & OpenID Connect**
     - Keycloak is an open source Identity and Access Management solution aimed at modern applications and services. It makes it easy to secure applications and services with little to no code.
+        - [x] **M10-employee-microservice**
+        - [x] **M11-customer-microservice**
+        - [ ] **M12-account-microservice**
+        - [ ] **M13-operation-microservice**
+        - [ ] **M99-user-microservice**
 
 ***
-- [ ] Set up minimal security for elk (Elasticsearch)
+- [ ] Set up minimal security for ELK (Elasticsearch)
+    - [ ] **M10-employee-microservice**
+    - [ ] **M11-customer-microservice**
+    - [ ] **M12-account-microservice**
+    - [ ] **M13-operation-microservice**
+    - [ ] **M99-user-microservice**
 
 ***    
 - [ ] Unit Tests for the module **M10-employee-microservice**.
 - [ ] Unit Tests for the module **M11-customer-microservice**.
 - [ ] Unit Tests for the module **M12-account-microservice**.
-- [ ] Unit Tests for the module **M13-operations-microservice**.
+- [ ] Unit Tests for the module **M13-operation-microservice**.
 - [ ] Unit Tests for the module **M99-user-microservice**.
 
 ***
@@ -174,7 +187,7 @@ Project developed in **Java EE** with **Spring 5 framework** (+ Spring Boot & Sp
 - [ ] **CRUD M12-account-microservice**:
     - Creation of component, service, module of Account, Current Account & Saving Account entities. (Creation, read, update & delete)
 
-- [ ] **CRUD M13-operations-microservice**:
+- [ ] **CRUD M13-operation-microservice**:
     - Creation of component, service, module of Operation (transfer, payment & withdrawal) entity. (Creation, read, update & delete)
 
 - [ ] **CRUD M99-user-microservice**:

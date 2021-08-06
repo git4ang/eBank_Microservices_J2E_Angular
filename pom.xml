@@ -11,10 +11,10 @@
     </parent>
 
     <groupId>ang.neggaw</groupId>
-    <artifactId>eBanque_Microservices_Reactive_JavaEE_Thymeleaf</artifactId>
+    <artifactId>eBanque_Microservices_JavaEE_Thymeleaf</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>eBanque_Microservices_Reactive_JavaEE_Thymeleaf</name>
+    <name>eBanque_Microservices_JavaEE_Thymeleaf</name>
     <description>Multi project e-banque developed in Java EE and Spring-5 Framework (microservices)</description>
 
     <properties>
@@ -25,12 +25,12 @@
     </properties>
 
     <modules>
-<!--        <module>M01-config-server</module>-->
-<!--        <module>M02-eureka-server</module>-->
-<!--        <module>M03-gateway-server</module>-->
-<!--        <module>M04-admin-server</module>-->
-<!--        <module>M10-employee-microservice</module>-->
-<!--        <module>M11-customer-microservice</module>-->
+        <module>M01-config-server</module>
+        <module>M02-eureka-server</module>
+        <module>M03-gateway-server</module>
+        <module>M04-admin-server</module>
+        <module>M10-employee-microservice</module>
+        <module>M11-customer-microservice</module>
 <!--        <module>M12-account-microservice</module>-->
 <!--        <module>M13-operation-microservice</module>-->
 <!--        <module>M99-user-microservice</module>-->
