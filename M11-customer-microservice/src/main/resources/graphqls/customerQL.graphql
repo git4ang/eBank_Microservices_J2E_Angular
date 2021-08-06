@@ -1,0 +1,26 @@
+enum EntityState {
+    CREATED, UPDATED, DELETED, PROCESSING
+}
+
+type Customer {
+    idCustomer: ID!,
+    name: String!,
+    phoneNumber: String!,
+    email: String!,
+    address: String!,
+    entityState: EntityState,
+    idEmployee: Int!,
+    accountNumbers: [String]
+}
+
+extend type Query {
+    customer(idCustomer: Int!): Customer
+    customers(offset: Int, count: Int): [Customer]!
+}
+
+extend type Mutation {
+    createCustomer(name: String!, phoneNumber: String!, email: String!, address: String!, idEmployee: Int!): Customer
+    updateCustomer(idCustomer: Int!, name: String!, phoneNumber: String!, email: String!, address: String!): Customer!
+    updateCustomer_employee(idCustomer: Int!, idEmployee: Int!, isRemoved: Boolean!): Boolean!
+    deleteCustomer(idCustomer: Int!): String
+}

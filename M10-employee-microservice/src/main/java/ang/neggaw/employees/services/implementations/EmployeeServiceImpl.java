@@ -2,8 +2,8 @@ package ang.neggaw.employees.services.implementations;
 
 import ang.neggaw.employees.entities.Department;
 import ang.neggaw.employees.entities.Employee;
-import ang.neggaw.employees.proxies.AccountProxy;
-import ang.neggaw.employees.proxies.CustomerProxy;
+import ang.neggaw.employees.proxies.AccountRestProxy;
+import ang.neggaw.employees.proxies.CustomerRestProxy;
 import ang.neggaw.employees.proxyModels.Account;
 import ang.neggaw.employees.proxyModels.Customer;
 import ang.neggaw.employees.repositories.DepartmentRepository;
@@ -31,8 +31,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
     private final DepartmentRepository departmentRepository;
-    private final CustomerProxy customerProxy;
-    private final AccountProxy accountProxy;
+    private final CustomerRestProxy customerRestProxy;
+    private final AccountRestProxy accountRestProxy;
 
     @Override
     public Object createEmployee(final String name,
@@ -146,7 +146,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         if(employeeDB == null)
             return String.format("Unable to update (add/remove) Employee. Employee with id: '%s' Not Found.", idEmployee);
         try {
-            Customer customer = customerProxy.getCustomerById(idCustomer);
+            Customer customer = customerRestProxy.getCustomerById(idCustomer);
 
             employeeDB.setEntityState(Employee.EntityState.UPDATED);
             if(isRemoved)
@@ -166,7 +166,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         if(employeeDB == null)
             return String.format("Unable to update (add/remove) Employee. Employee with id: '%s' Not Found.", idEmployee);
         try {
-            Account account = accountProxy.getAccountById(accountNumber);
+            Account account = accountRestProxy.getAccountById(accountNumber);
 
             employeeDB.setEntityState(Employee.EntityState.UPDATED);
             if(isRemoved)

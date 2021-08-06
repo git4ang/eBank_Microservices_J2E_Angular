@@ -1,6 +1,6 @@
-package ang.neggaw.employees.proxyModels;
+package ang.neggaw.customers.proxyModels;
 
-import ang.neggaw.employees.entities.Employee;
+import ang.neggaw.customers.entities.Customer;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,27 +11,25 @@ import javax.persistence.Enumerated;
 
 /**
  * @author ANG
- * @since 05-08-2021 19:49
+ * @since 06-08-2021 15:04
  */
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Customer {
+public class Employee {
 
-    private int idCustomer;
+    private Integer idEmployee;
 
     private String name;
 
-    private String phoneNumber;
-
     private String email;
 
-    private String address;
+    private int idDepartment;
 
-    private Employee employee;
+    private int idEmployeeBoss;
 
     @Enumerated(EnumType.STRING)
-    private Employee.EntityState entityState;
+    private Customer.EntityState entityState;
 }

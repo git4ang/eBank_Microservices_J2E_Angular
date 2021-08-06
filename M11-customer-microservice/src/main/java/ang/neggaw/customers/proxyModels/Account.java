@@ -1,6 +1,6 @@
-package ang.neggaw.employees.proxyModels;
+package ang.neggaw.customers.proxyModels;
 
-import ang.neggaw.employees.entities.Employee;
+import ang.neggaw.customers.entities.Customer;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
  * @author ANG
- * @since 05-08-2021 19:49
+ * @since 06-08-2021 15:04
  */
 
 @Getter
@@ -32,5 +32,5 @@ public class Account {
     private Employee employee;
 
     @Enumerated(EnumType.STRING)
-    private Employee.EntityState entityState;
+    private Customer.EntityState entityState;
 }
