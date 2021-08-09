@@ -28,3 +28,15 @@ altair:
   mapping: "/altair"
   page-title: "Altair customer-microservice"
   enabled: true
+
+# keycloak config
+keycloak:
+  realm: "eBanque-microservice-realm"
+  auth-server-url: "http://localhost:9080/auth"
+  ssl-required: "external"
+  resource: "customer-microservice-client"
+  bearer-only: true
+  use-resource-role-mappings: true
+#  public-client: true
+#  confidential-port: 0
+#  cors: true
