@@ -40,8 +40,11 @@ public class Employee implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties(value = { "employeeBoss" })
     @JsonIgnore
-    @NotNull
     private Employee employeeBoss;
+
+    @NotNull
+    @Transient
+    private long idEmployeeBoss;
 
     @OneToMany(mappedBy = "employeeBoss", fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = { "employeeBoss", "department","underEmployees" })

@@ -43,8 +43,11 @@ public class EmployeeMutation implements GraphQLMutationResolver {
 
         log.info("Updating Employee with id: '{}'.", idEmployee);
         Object o = employeeService.updateEmployee(idEmployee, name, email);
-        if(o.getClass().getSimpleName().equals("String"))
+        if(o.getClass().getSimpleName().equals("String")) {
             log.error(o);
+            return null;
+        }
+
 
         Employee employeeDB = (Employee) o;
         log.info("Employee with id: '{}' UPDATED successfully.", idEmployee);
@@ -120,9 +123,9 @@ public class EmployeeMutation implements GraphQLMutationResolver {
         log.info("Deleting Employee with id: '{}'", idEmployee);
 
         String resp = employeeService.deleteEmployee(idEmployee);
-        if (! resp.equals("deleted")) {
-            log.error(resp);
-            return resp;
+        if (resp == null) {
+            log.error("Unable to delete. Employee with id: '{}' Not Found.", idEmployee);
+            return String.format("Unable to delete. Employee with id: '%s' Not Found.", idEmployee);
         }
 
         log.info("Employee with id: '{}' DELETED successfully", idEmployee);

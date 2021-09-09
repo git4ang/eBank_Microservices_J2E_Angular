@@ -7,7 +7,7 @@ type Employee {
     name: String!,
     email: String!,
     entityState: EntityStateEmployee,
-    employeeBoss: Employee!,
+    employeeBoss: Employee,
     underEmployees: [Employee],
     department: Department!
 }

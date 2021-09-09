@@ -45,7 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             return String.format("Unable to create. Employee with Department with id: '%s' Not Found.", idDepartment);
 
         Employee boss = employeeRepository.findByIdEmployee(idEmployeeBoss);
-        if (boss == null)
+        if (boss == null && employeeRepository.findAll().size() > 0)
             return String.format("Unable to create. Employee with EmployeeBoss with id: '%s' Not Found.", idEmployeeBoss);
 
         Employee employee = Employee.builder()
@@ -183,11 +183,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     public String deleteEmployee(final int idEmployee) {
 
         Employee employee = getEmployee(idEmployee);
-        if(employee == null)
-            return String.format("Unable to delete. Employee with id: '%s' Not Found.", idEmployee);
 
         employee.setEntityState(Employee.EntityState.DELETED);
         employeeRepository.delete(employee);
-        return String.format("Employee with id: '%s' DELETED successfully.", idEmployee);
+
+        if (employeeRepository.existsById(idEmployee))
+            return null;
+        else
+            return String.valueOf(idEmployee);
     }
 }

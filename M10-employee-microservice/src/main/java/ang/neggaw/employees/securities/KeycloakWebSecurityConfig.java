@@ -1,4 +1,4 @@
-package ang.neggaw.employees;
+package ang.neggaw.employees.securities;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -110,9 +110,9 @@ public class KeycloakWebSecurityConfig extends KeycloakWebSecurityConfigurerAdap
 
                 // manage security routes
                 .authorizeRequests()
-                .antMatchers("logout", "/").permitAll()
-                .antMatchers("/", "/graphql", "/employees/**", "/departments/**")
-                .hasAnyRole("ADMIN")
+                .antMatchers("/logout", "/login").permitAll()
+                .antMatchers("/", "/graphql", "/playground", "/altair", "/employees/**", "/departments/**")
+                .hasAnyRole("ADMIN", "admin_employee")
                 .anyRequest().permitAll();
     }
 
