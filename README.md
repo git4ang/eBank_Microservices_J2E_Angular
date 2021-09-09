@@ -52,7 +52,7 @@ Project developed in **Java EE** with **Spring 5 framework** (+ Spring Boot & Sp
 - There are two types of **operations**: deposit and withdrawal.
 - Each transaction is performed by an employee.
 - Each **Transaction entity** is defined by its number, amount, description, date of creation and an Account entity.
-- There are three types of operations: Transfer, Payment and withdrawal.
+- There are three types of operations: Transfer, Deposit and withdrawal.
 - Each **User reactive entity** is defined by an id, username, Customer entity, email and a collection of roles.
 - Each **Role reactive entity** is defined by an id, roleName, collection of users.
 

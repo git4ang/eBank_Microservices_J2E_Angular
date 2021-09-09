@@ -112,9 +112,9 @@ public class KeycloakWebSecurityConfig extends KeycloakWebSecurityConfigurerAdap
 
                 // manage security routes
                 .authorizeRequests()
-                .antMatchers("logout", "/").permitAll()
-                .antMatchers("/", "/graphql", "/customers/**")
-                .hasAnyRole("ADMIN")
+                .antMatchers("/logout", "/login").permitAll()
+                .antMatchers("/", "/graphql", "/playground", "/altair", "/customers/**")
+                .hasAnyRole("ADMIN", "admin_customer")
                 .anyRequest().permitAll();
     }
 
