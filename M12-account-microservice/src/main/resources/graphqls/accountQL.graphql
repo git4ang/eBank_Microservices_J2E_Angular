@@ -1,0 +1,35 @@
+scalar Date
+
+type Account {
+    accountNumber: ID!
+    dateCreation: Date
+    balance: Float
+    idCustomer: Int!
+    idEmployee: Int!
+    entityState: EntityState
+}
+
+extend type Query {
+    getAccount(accountNumber: ID!): Account
+    allAccounts(offset: Int, count: Int): [Account]
+}
+
+extend type Mutation {
+    createAccount(accountInput: AddAccountInput): Account
+    updateAccount(accountNumber: ID!, accountInput: updateAccountInput): Account
+    deleteAccount(accountNumber: ID!): String
+}
+
+enum EntityState { CREATED, UPDATED, DELETED, PROCESSING }
+
+input AddAccountInput {
+    account_type: String
+    balance: Float
+    idCustomer: Int!
+    idEmployee: Int!
+}
+
+input updateAccountInput {
+    dateCreation: Date
+    balance: Float
+}

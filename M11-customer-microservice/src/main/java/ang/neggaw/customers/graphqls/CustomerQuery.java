@@ -21,7 +21,7 @@ public class CustomerQuery implements GraphQLQueryResolver {
 
     private final CustomerService customerService;
 
-    public Customer customer(final int idCustomer) {
+    public Customer getCustomer(final int idCustomer) {
 
         log.info("Fetching Customer with id: '{}'.", idCustomer);
         Customer customer = customerService.getCustomer(idCustomer);
