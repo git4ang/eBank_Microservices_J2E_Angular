@@ -32,7 +32,7 @@
         <module>M10-employee-microservice</module>
         <module>M11-customer-microservice</module>
         <module>M12-account-microservice</module>
-<!--        <module>M13-operation-microservice</module>-->
+        <module>M13-operation-microservice</module>
 <!--        <module>M99-user-microservice</module>-->
     </modules>
 

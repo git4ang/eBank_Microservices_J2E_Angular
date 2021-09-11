@@ -1,0 +1,38 @@
+scalar Date
+
+type Operation {
+    operationNumber: ID!,
+    dateOperation: Date,
+    amount: Float,
+    description: String,
+    accountNumber: Int,
+    idEmployee: Int,
+    entityState: EntityState
+}
+
+extend type Query {
+    getOperation(operationNumber: ID!): Operation
+    allOperations(offset: Int, count: Int): [Operation]
+}
+
+extend type Mutation {
+    createOperation(addOperationData: AddOperationInput): Operation,
+    updateOperation(operationNumber: ID!, updateOperationData: updateOperationInput): Operation,
+    deleteOperation(operationNumber: ID!): String
+}
+
+enum EntityState { CREATED, UPDATED, DELETED, PROCESSING }
+
+input AddOperationInput {
+    dateOperation: Date,
+    amount: Float,
+    description: String,
+    accountNumber: Int,
+    idEmployee: Int,
+}
+
+input updateOperationInput {
+    dateOperation: Date,
+    amount: Float,
+    description: String,
+}
