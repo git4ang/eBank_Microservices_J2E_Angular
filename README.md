@@ -86,12 +86,12 @@ Project developed in **Java EE** with **Spring 5 framework** (+ Spring Boot & Sp
     - Set up the M11-customer-microservice module with the creation of the necessary packages such as: entities, repositories, restControllers,
       services, exceptions, proxies ... etc
   ***
-- [ ] **M12-account-microservice** module creation.
+- [x] **M12-account-microservice** module creation.
     - Set up the M12-account-microservice module with the creation of the necessary packages such as: entities, repositories, restControllers,
       services, exceptions, proxies ... etc
 
 ***
-- [ ] **M13-operation-microservice** module creation.
+- [x] **M13-operation-microservice** module creation.
     - Set up the M13-operations-microservice module with the creation of the necessary packages such as: entities, repositories, restControllers,
       services, exceptions, proxies ... etc
 
@@ -110,8 +110,8 @@ Project developed in **Java EE** with **Spring 5 framework** (+ Spring Boot & Sp
             - [x] **M04-admin-server**
             - [x] **M10-employee-microservice**
             - [x] **M11-customer-microservice**
-            - [ ] **M12-account-microservice**
-            - [ ] **M13-operation-microservice**
+            - [x] **M12-account-microservice**
+            - [x] **M13-operation-microservice**
             - [ ] **M99-user-microservice**
 ***
 
@@ -119,16 +119,16 @@ Project developed in **Java EE** with **Spring 5 framework** (+ Spring Boot & Sp
     - GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
         - [x] **M10-employee-microservice**
         - [x] **M11-customer-microservice**
-        - [ ] **M12-account-microservice**
-        - [ ] **M13-operation-microservice**
+        - [x] **M12-account-microservice**
+        - [x] **M13-operation-microservice**
         - [ ] **M99-user-microservice**
 ***
 
 - [ ] **Zipkin server** and **Sleuth** for all microservices modules.
     - [x] **M10-employee-microservice**
     - [x] **M11-customer-microservice**
-    - [ ] **M12-account-microservice**
-    - [ ] **M13-operation-microservice**
+    - [x] **M12-account-microservice**
+    - [x] **M13-operation-microservice**
     - [ ] **M99-user-microservice**
         - **Docker:** _docker run -d -p 9411:9411 openzipkin/zipkin_
         - **Java:** _curl -sSL https://zipkin.io/quickstart.sh | bash -s java -jar zipkin.jar_
@@ -136,24 +136,24 @@ Project developed in **Java EE** with **Spring 5 framework** (+ Spring Boot & Sp
 ***
 - [x] Validations JPA for the module **M10-employee-microservice**.
 - [x] Validations JPA for the module **M11-customer-microservice**.
-- [ ] Validations JPA for the module **M12-account-microservice**.
-- [ ] Validations JPA for the module **M13-operation-microservice**.
+- [x] Validations JPA for the module **M12-account-microservice**.
+- [x] Validations JPA for the module **M13-operation-microservice**.
 - [ ] Validations JPA for the module **M99-user-microservice**.
 
 ***
-- [ ] Spring Security
-    - [ ] Spring Security for the **M01-config-server**
-    - [ ] Spring Security for the **M02-eureka-server**
-    - [ ] Spring Security for the **M03-gateway-server**
-    - [ ] Spring Security for the **M04-admin-server**
+- [x] Spring Security
+    - [x] Spring Security for the **M01-config-server**
+    - [x] Spring Security for the **M02-eureka-server**
+    - [x] Spring Security for the **M03-gateway-server**
+    - [x] Spring Security for the **M04-admin-server**
 
 ***
 - [ ] **Keycloak server with OAuth 2.0 & OpenID Connect**
     - Keycloak is an open source Identity and Access Management solution aimed at modern applications and services. It makes it easy to secure applications and services with little to no code.
         - [x] **M10-employee-microservice**
         - [x] **M11-customer-microservice**
-        - [ ] **M12-account-microservice**
-        - [ ] **M13-operation-microservice**
+        - [x] **M12-account-microservice**
+        - [x] **M13-operation-microservice**
         - [ ] **M99-user-microservice**
 
 ***
