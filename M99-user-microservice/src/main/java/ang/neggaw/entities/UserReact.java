@@ -9,7 +9,12 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,9 +39,13 @@ public class UserReact implements Serializable {
     @MongoId(FieldType.INT64)
     private String idUser;
 
+    @NotNull
+    @NotEmpty
     @Indexed(unique = true)
     private String username;
 
+    @NotNull
+    @NotEmpty
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ToString.Exclude
     private String password;
@@ -45,15 +54,20 @@ public class UserReact implements Serializable {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String rePassword;
 
+    @NotEmpty
+    @Email(regexp = ".*@.*\\..*")
     @Indexed(unique = true)
     private String email;
 
     private boolean enabled;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date lastPasswordResetDate;
 
     private List<String> authorities = new ArrayList<>();
 
+    @NotNull
+    @Positive
     @Transient
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ToString.Exclude

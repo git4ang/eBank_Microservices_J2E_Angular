@@ -8,6 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,8 @@ public class RoleReact implements Serializable {
     @MongoId(FieldType.INT64)
     private String idRole;
 
+    @NotNull
+    @NotEmpty
     @Indexed(unique = true)
     private String roleName;
 
