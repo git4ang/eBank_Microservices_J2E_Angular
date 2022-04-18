@@ -5,7 +5,7 @@
 
     <parent>
         <groupId>ang.neggaw</groupId>
-        <artifactId>eBanque_Microservices_JavaEE_Thymeleaf</artifactId>
+        <artifactId>eBank_Microservices_J2E_Angular</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
@@ -15,7 +15,8 @@
 
     <properties>
         <java.version>16</java.version>
-        <spring-cloud.version>2020.0.3</spring-cloud.version>
+        <spring-boot-admin.version>2.6.5</spring-boot-admin.version>
+        <spring-cloud.version>2021.0.1</spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -54,6 +55,10 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
         </dependency>
 
         <!-- GraphQL, GraphiQL, playground and altair dependencies -->
@@ -151,6 +156,13 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring-boot-admin.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
